@@ -13,7 +13,7 @@ def analyze_wait_time(input_file_path, output_file_path):
     # Compute summary stats
     def compute_summary(group):
         summary = group.groupby('wait_time').agg(
-            total_shared_rides=('total_shared_rides', 'sum'),
+            avg_shared_rides=('total_shared_rides', 'mean'),
             avg_match_proportion=('match_proportion', 'mean'),
             avg_double_match_proportion=('double_match_proportion', 'mean'),
             avg_driver_payout_per_trip=('driver_payout_per_trip', 'mean'),
