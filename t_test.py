@@ -22,7 +22,7 @@ def analyze_wait_time(input_file_path, output_file_path):
     for metric in metrics:
         commute_true = control_group[control_group['commute'] == True][metric].dropna()
         commute_false = control_group[control_group['commute'] == False][metric].dropna()
-        t_stat, p_value = ttest_ind(commute_true, commute_false, equal_var=True)  # Student's t-test
+        t_stat, p_value = ttest_ind(commute_true, commute_false, equal_var=True) 
         results.append({'Metric': metric, 'T-Statistic': t_stat, 'P-Value': p_value})
     
     commute_subset = df[df['commute'] == True]
@@ -33,7 +33,7 @@ def analyze_wait_time(input_file_path, output_file_path):
     for metric in metrics:
         treat_values = treatment_group[metric].dropna()
         control_values = control_group[metric].dropna()
-        t_stat, p_value = ttest_ind(treat_values, control_values, equal_var=True)  # Student's t-test
+        t_stat, p_value = ttest_ind(treat_values, control_values, equal_var=True)
         wait_time_results.append({'Metric': metric, 'T-Statistic': t_stat, 'P-Value': p_value})
     
     # Convert results to DataFrame and save
